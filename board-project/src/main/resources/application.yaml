@@ -31,12 +31,12 @@ spring:
 
 
 ---
-spring:
-  config.activate.on-profile: testdb
-#  datasource:
-#    url: jdbc:h2:mem:board;mode=mysql
-#    driverClassName: org.h2.Driver
-#  sql.init.mode:always
-#  test.data
+#spring:
+#  config.activate.on-profile: testdb
+##  datasource:
+##    url: jdbc:h2:mem:board;mode=mysql
+##    driverClassName: org.h2.Driver
+##  sql.init.mode:always
+##  test.database.replace: none
 
 
