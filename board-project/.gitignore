@@ -1,4 +1,8 @@
 HELP.md
+
+# Querydsl
+/src/main/generated
+
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
