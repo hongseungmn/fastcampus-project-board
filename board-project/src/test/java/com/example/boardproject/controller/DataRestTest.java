@@ -23,54 +23,54 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 public class DataRestTest {
 
-    private final MockMvc mvc;
+  private final MockMvc mvc;
 
-    public DataRestTest(@Autowired MockMvc mvc) {
-        this.mvc = mvc;
-    }
+  public DataRestTest(@Autowired MockMvc mvc) {
+    this.mvc = mvc;
+  }
 
-    @DisplayName("[api] 게시글 리스트 조회")
-    @Test
-    void givenNothing_whenRequestingArticles_thenReturnsArticlesJsonResponse() throws Exception {
-        mvc.perform(get("/api/articles"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
-                //.andDo(print());
-    }
+  @DisplayName("[api] 게시글 리스트 조회")
+  @Test
+  void givenNothing_whenRequestingArticles_thenReturnsArticlesJsonResponse() throws Exception {
+    mvc.perform(get("/api/articles"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
+    //.andDo(print());
+  }
 
-    @DisplayName("[api] 게시글 단건 조회")
-    @Test
-    void givenNothing_whenRequestingArticle_thenReturnsArticleJsonResponse() throws Exception {
-        mvc.perform(get("/api/articles/1"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
-        //.andDo(print());
-    }
+  @DisplayName("[api] 게시글 단건 조회")
+  @Test
+  void givenNothing_whenRequestingArticle_thenReturnsArticleJsonResponse() throws Exception {
+    mvc.perform(get("/api/articles/1"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
+    //.andDo(print());
+  }
 
-    @DisplayName("[api] 게시글 -> 댓글 리스트 조회")
-    @Test
-    void givenNothing_whenRequestingArticleCommentFromArticle_thenReturnsArticleCommentsJsonResponse() throws Exception {
-        mvc.perform(get("/api/articles/1/articleComments"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
-        //.andDo(print());
-    }
+  @DisplayName("[api] 게시글 -> 댓글 리스트 조회")
+  @Test
+  void givenNothing_whenRequestingArticleCommentFromArticle_thenReturnsArticleCommentsJsonResponse() throws Exception {
+    mvc.perform(get("/api/articles/1/articleComments"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
+    //.andDo(print());
+  }
 
-    @DisplayName("[api] 댓글 리스트 조회")
-    @Test
-    void givenNothing_whenRequestingArticleComments_thenReturnsArticleCommentsJsonResponse() throws Exception {
-        mvc.perform(get("/api/articleComments"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
-        //.andDo(print());
-    }
+  @DisplayName("[api] 댓글 리스트 조회")
+  @Test
+  void givenNothing_whenRequestingArticleComments_thenReturnsArticleCommentsJsonResponse() throws Exception {
+    mvc.perform(get("/api/articleComments"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
+    //.andDo(print());
+  }
 
-    @DisplayName("[api] 댓글 단건 조회")
-    @Test
-    void givenNothing_whenRequestingArticleComment_thenReturnsArticleCommentJsonResponse() throws Exception {
-        mvc.perform(get("/api/articleComments/1"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
-        //.andDo(print());
-    }
+  @DisplayName("[api] 댓글 단건 조회")
+  @Test
+  void givenNothing_whenRequestingArticleComment_thenReturnsArticleCommentJsonResponse() throws Exception {
+    mvc.perform(get("/api/articleComments/1"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
+    //.andDo(print());
+  }
 }

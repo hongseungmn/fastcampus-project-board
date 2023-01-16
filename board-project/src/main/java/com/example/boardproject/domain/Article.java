@@ -27,44 +27,44 @@ import java.util.Set;
 @Entity
 public class Article extends AuditingFields {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy= GenerationType.IDENTITY)
+  private Long id;
 
 
-    //id는 접근하게 하고 싶지 않아 클래스 전체에 setter를 걸지 않는다.
-    @Setter @Column(nullable = false) private String title; // 제목
-    @Setter @Column(nullable = false, length = 10000) private String content; // 본문
+  //id는 접근하게 하고 싶지 않아 클래스 전체에 setter를 걸지 않는다.
+  @Setter @Column(nullable = false) private String title; // 제목
+  @Setter @Column(nullable = false, length = 10000) private String content; // 본문
 
-    @Setter private String hashtag; // 해시태그
+  @Setter private String hashtag; // 해시태그
 
-    @ToString.Exclude
-    @OrderBy("id")
-    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
-    private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
+  @ToString.Exclude
+  @OrderBy("id")
+  @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+  private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
 
-    protected Article() {}
+  protected Article() {}
 
-    private Article(String title, String content, String hashtag) {
-        this.title = title;
-        this.content = content;
-        this.hashtag = hashtag;
-    }
+  private Article(String title, String content, String hashtag) {
+    this.title = title;
+    this.content = content;
+    this.hashtag = hashtag;
+  }
 
-    public static Article of(String title, String content, String hashtag) {
-        return new Article(title, content, hashtag);
-    }
+  public static Article of(String title, String content, String hashtag) {
+    return new Article(title, content, hashtag);
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Article article)) return false;
-        return id.equals(article.id);
-    }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Article article)) return false;
+    return id.equals(article.id);
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
+  }
 }
