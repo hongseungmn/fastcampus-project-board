@@ -40,7 +40,7 @@ public class UserAccount extends AuditingFields {
     this.memo = memo;
   }
 
-  private static UserAccount of(String userId, String userPassword, String email, String  nickname, String memo) {
+  public static UserAccount of(String userId, String userPassword, String email, String  nickname, String memo) {
     return new UserAccount(userId, userPassword, email, nickname, memo);
   }
 
