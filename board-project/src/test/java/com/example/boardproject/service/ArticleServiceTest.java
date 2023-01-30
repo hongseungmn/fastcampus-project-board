@@ -41,7 +41,8 @@ class ArticleServiceTest {
     // When
     Page<ArticleDto> articles = sut.searchArticles(null, null, pageable);
     // Then
-    assertThat(articles).isNotNull();
+    assertThat(articles).isEmpty();
+    then(articleRepository).should().findAll(pageable);
   }
 
   @DisplayName("검색어와 함께 게시글을 검색하면, 게시글 페이지를 반환한다.")
