@@ -27,7 +27,7 @@ public class ArticleComment extends AuditingFields{
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-
+//ManyToOne 은 N : 1 관계라고 볼 수 있다. 즉 댓글은 게시글을 바라본다면 ManyToOne이라는 관계형성(게시글 하나에 댓글 여러개)
   @Setter @ManyToOne(optional = false) private Article article; // 게시글 (ID)
 
   @Setter @ManyToOne(optional = false) private UserAccount userAccount;

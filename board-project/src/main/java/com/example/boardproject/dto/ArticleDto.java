@@ -6,6 +6,8 @@ import com.example.boardproject.domain.ArticleComment;
 import java.time.LocalDateTime;
 
 
+
+
 public record ArticleDto(
         Long id,
         UserAccountDto userAccountDto,
@@ -35,7 +37,7 @@ public record ArticleDto(
     );
   }
 
-  public Article toEntity(Article entity) {
+  public Article toEntity() {
     return Article.of(
             userAccountDto.toEntity(),
             title,
