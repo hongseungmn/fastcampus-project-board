@@ -4,14 +4,16 @@ management:
     web:
       exposure:
         include: "*"
-
+#com.fastcampus.projectboard: 에서 발생하는 모든 로그들은 debug 모드로 설정
+#org.springframework.web.servlet: 맨 위의 debug를 true로 하면 모든 로그를 찍게 되는데 아래는 서블릿을 통해 요청과 응답만 로그로 뽑아 출력
+#org.hibernate.type.descriptor.sql.BasicBinder: 쿼리 로그를 디버그로 관찰 가능
 logging:
   level:
     com.fastcampus.projectboard: debug
     org.springframework.web.servlet: debug
     org.hibernate.type.descriptor.sql.BasicBinder: trace
 
-
+# 데이타소스의 정보를 넣어 바로 접근 가능하게 한다(build gradle에 세팅을 기준)
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/board
@@ -37,7 +39,7 @@ spring:
 
 
 
-
+# 아래는 테스트 환경에서의 데이터 베이스를 기반
 ---
 #spring:
 #  config.activate.on-profile: testdb
