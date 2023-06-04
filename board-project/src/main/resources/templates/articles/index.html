@@ -13,7 +13,10 @@
 
 <body>
 <!--아래 태그는 thymleaf 형식을 사용 (th:) 를 사용하지 않고 기존 마크업으로만 사용할 수 있게 했다-->
-  <header id="header"></header>
+  <header id="header">
+    헤더 삽입부
+    <hr>
+  </header>
 
   <main class="container">
 
@@ -53,38 +56,21 @@
         </div>
       </div>
     </div>
-
-
-    <!--        검색창-->
-<!--    <form>-->
-<!--      <label for="search-type" hidden>유형</label>-->
-<!--      <select id="search-type" name="search-type">-->
-<!--        <option>제목</option>-->
-<!--        <option>본문</option>-->
-<!--        <option>ID</option>-->
-<!--        <option>닉네임</option>-->
-<!--        <option>해시태그</option>-->
-<!--      </select>-->
-<!--      <label for="search-value" hidden>검색어</label>-->
-<!--      <input id="search-value" type="search" placeholder="검색어..." name="search-value">-->
-<!--      <button type="submit">검색</button>-->
-<!--    </form>-->
-
-    <table class="table">
+    <table class="table" id="article-table">
       <thead>
         <tr>
-          <th class="col-6">제목</th>
-          <th class="col-2">해시태그</th>
-          <th class="col">작성자</th>
-          <th class="col">작성일</th>
+          <th class="title col-6">제목</th>
+          <th class="hashtag col-2">해시태그</th>
+          <th class="user-id col">작성자</th>
+          <th class="created-by col">작성일</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>첫글</td>
-          <td>#java</td>
-          <td>hong</td>
-          <td>2023-1-15</td>
+          <td class="title"><a>첫글</a></td>
+          <td class="hashtag">#java</td>
+          <td class="user-id">hong</td>
+          <td class="created-at"><time>2023-1-15</time></td>
         </tr>
         <tr>
           <td>두번째글</td>
@@ -109,21 +95,12 @@
         <li class="page-item"><a class="page-link" href="#">3</a></li>
         <li class="page-item"><a class="page-link" href="#">Next</a></li>
       </ul>
-
-
-<!--      <table>-->
-<!--        <tr>-->
-<!--          <td>previous</td>-->
-<!--          <td>1</td>-->
-<!--          <td>2</td>-->
-<!--          <td>3</td>-->
-<!--          <td>4</td>-->
-<!--          <td>next</td>-->
-<!--        </tr>-->
-<!--      </table>-->
     </nav>
   </main>
-  <footer id="footer"></footer>
+  <footer id="footer">
+    <hr>
+    푸터 삽입부
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
