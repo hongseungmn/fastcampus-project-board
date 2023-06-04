@@ -16,10 +16,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Disabled("Spring Data REST 통합테스트는 붎필요하므로 제외시킴")
+
 @DisplayName("Data REST - API 테스트")
-@Transactional
+@Transactional//Test에서 동작하는 모든 것들은 롤백 상태가 된다
 @AutoConfigureMockMvc
+@Disabled("Spring Data REST 통합테스트는 불필요하므로 제외시킴")
 @SpringBootTest
 public class DataRestTest {
 
@@ -28,7 +29,6 @@ public class DataRestTest {
   public DataRestTest(@Autowired MockMvc mvc) {
     this.mvc = mvc;
   }
-
   @DisplayName("[api] 게시글 리스트 조회")
   @Test
   void givenNothing_whenRequestingArticles_thenReturnsArticlesJsonResponse() throws Exception {

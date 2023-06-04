@@ -27,6 +27,7 @@ import java.util.Set;
 @Entity//위에 것들이 Entity 이라고 명시
 //Auditing이라는 것은 Spring Data JPA에서 시간에 대해서 자동으로 값을 넣어주는 기능입니다
 //hibernate를 사용하면 자동으로 테이블을 생성해 주는 것이다
+//AuditingFields는 상속을 통해 추가할 수도 있다 또는 Article 클래스 안에 생성할 수도 있다
 public class Article extends AuditingFields {
 
   @Id//기본키 설정

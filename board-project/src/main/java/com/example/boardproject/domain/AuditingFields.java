@@ -14,6 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
+// Auditing 관련 속성을 따로 분리한 것이다
 @Getter
 @ToString
 @EntityListeners(AuditingEntityListener.class)
@@ -22,6 +23,7 @@ public abstract class AuditingFields {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 
+  //updatable = false 값의 업데이트는 불가하게 설정
   @CreatedDate
   @Column(nullable = false, updatable = false)
   private LocalDateTime createdAt; // 생성일시
