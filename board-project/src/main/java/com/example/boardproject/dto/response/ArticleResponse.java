@@ -1,4 +1,4 @@
-package com.example.boardproject.response;
+package com.example.boardproject.dto.response;
 
 import com.example.boardproject.dto.ArticleDto;
 
