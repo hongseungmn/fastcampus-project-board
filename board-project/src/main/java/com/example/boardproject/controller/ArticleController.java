@@ -36,6 +36,7 @@ public class ArticleController {
   ) {
     Page<ArticleResponse> articles = articleService.searchArticles(searchType,searchValue,pageable).map(ArticleResponse::from);
     List<Integer> barNumbers = paginationService.getPaginationBarNumbers(pageable.getPageNumber(),articles.getTotalPages());
+
     map.addAttribute("articles",articles);
     map.addAttribute("paginationBarNumbers",barNumbers);
     return "articles/index";
