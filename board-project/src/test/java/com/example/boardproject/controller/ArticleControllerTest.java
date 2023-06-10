@@ -1,6 +1,7 @@
 package com.example.boardproject.controller;
 
 import com.example.boardproject.config.SecurityConfig;
+import com.example.boardproject.domain.type.SearchType;
 import com.example.boardproject.dto.ArticleWithCommentsDto;
 import com.example.boardproject.dto.UserAccountDto;
 import com.example.boardproject.service.ArticleService;
@@ -57,8 +58,33 @@ class ArticleControllerTest {
             .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))//contentType이 올바른가 contentTypeCompatibleWith는 동일 계열이 맞으면 통과한다
             .andExpect(view().name("articles/index"))//실제 배치될 뷰의 이름 테스트(해당 이름의 뷰 존재 여부 파악)
             .andExpect(model().attributeExists("articles"))
-            .andExpect(model().attributeExists("paginationBarNumbers"));
+            .andExpect(model().attributeExists("paginationBarNumbers"))
+            .andExpect(model().attributeExists("searchTypes"));
     then(articleService).should().searchArticles(eq(null),eq(null),any(Pageable.class));
+    then(paginationService).should().getPaginationBarNumbers(anyInt(), anyInt());
+  }
+
+  @DisplayName("[view][GET] 게시글 리스트 (게시판) 페이지 - 검색어와 함께 호출")
+  @Test
+  public void givenSearchKeyword_whenSearchingArticlesView_thenReturnsArticlesView() throws Exception {
+    // Given
+    SearchType searchType = SearchType.TITLE;
+    String searchValue = "title";
+    given(articleService.searchArticles(eq(searchType), eq(searchValue), any(Pageable.class))).willReturn(Page.empty());
+    given(paginationService.getPaginationBarNumbers(anyInt(), anyInt())).willReturn(List.of(0, 1, 2, 3, 4));
+
+    // When & Then
+    mvc.perform(
+                    get("/articles")
+                            .queryParam("searchType", searchType.name())
+                            .queryParam("searchValue", searchValue)
+            )
+            .andExpect(status().isOk())
+            .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
+            .andExpect(view().name("articles/index"))
+            .andExpect(model().attributeExists("articles"))
+            .andExpect(model().attributeExists("searchTypes"));
+    then(articleService).should().searchArticles(eq(searchType), eq(searchValue), any(Pageable.class));
     then(paginationService).should().getPaginationBarNumbers(anyInt(), anyInt());
   }
 
