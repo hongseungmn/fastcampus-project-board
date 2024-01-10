@@ -20,6 +20,7 @@ import java.util.List;
 @Transactional
 @Service
 public class ArticleService {
+  //DTO와 도메인 존재를 모두 알고 있는 것은 서비스 레이어가 된다
 
   private final ArticleRepository articleRepository;
 
@@ -64,7 +65,7 @@ public class ArticleService {
     articleRepository.deleteById(articleId);
   }
 
-  public long getArticleCout() {
+  public long getArticleCount() {
     return articleRepository.count();
   }
 

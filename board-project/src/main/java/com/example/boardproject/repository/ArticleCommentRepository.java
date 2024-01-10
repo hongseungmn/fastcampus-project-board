@@ -19,6 +19,8 @@ public interface ArticleCommentRepository extends
         QuerydslPredicateExecutor<ArticleComment>,
         QuerydslBinderCustomizer<QArticleComment> {
 
+    //'_' : 게시글 아이디를 통해 그 게시글 아이디에 해당하는 댓글들을 리스트로 뽑아내는 것(연관관계를 타고 들어감) -> 댓글에 있는 요소로 검색 x , 게시글로 댓글을 검색
+    //객체_필드명 -> Article의 ID를 준다는 의미(댓글의 아이디 x) 게시글의 아이디 o
     List<ArticleComment> findByArticle_Id(Long articleId);
 
     @Override
@@ -30,4 +32,5 @@ public interface ArticleCommentRepository extends
         bindings.bind(root.createdBy).first(StringExpression::containsIgnoreCase);
     }
 }
+
 

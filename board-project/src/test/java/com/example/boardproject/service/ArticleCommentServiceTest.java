@@ -133,6 +133,7 @@ class ArticleCommentServiceTest {
   }
 
 
+  //단순 테스트용 데이터 세팅한 것. fixture라 일컫음. -> 원래는 따로 파일로 만든후 추출해 사용하지만 여기선 그냥 사용
   private ArticleCommentDto createArticleCommentDto(String content) {
     return ArticleCommentDto.of(
             1L,

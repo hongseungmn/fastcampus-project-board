@@ -24,6 +24,7 @@ import java.util.List;
 @RequestMapping("/articles")
 @Controller
 public class ArticleController {
+  //컨트롤러 레이어는 심지어 일반 DTO의 존재도 모르고
 
   private final ArticleService articleService;
   private final PaginationService paginationService;
