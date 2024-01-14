@@ -15,6 +15,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @DisplayName("비즈니스 로직 - 페이지네이션")
+//아래 인자와 같이 설정하면 테스트의 무게가 줄어든다
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes= PaginationService.class)
 class PaginationServiceTest {
 
@@ -26,10 +27,15 @@ class PaginationServiceTest {
 
   @DisplayName("현재 페이지 번호와 총 페이지 수를 주면, 페이징 바 리스트를 만들어 준다.")
   @MethodSource
-  @ParameterizedTest(name = "[{index}] 현재 페이지 :{0}, 총 페이지 :{1} => {2}")
+  @ParameterizedTest(name = "[{index}] 현재 페이지 :{0}, 총 페이지 :{1} => {2}")//테스트 하고싶은 여러 개의 인자값을 넣어 볼 수 있다
   void givenCurrentPageNumberAndTotalPages_whenCalculating_thenReturnsPaginationVarNumbers(int currentPageNumber, int totalPages, List<Integer> expected) {
 
+    //Given
+
+    //When
     List<Integer> actual = sut.getPaginationBarNumbers(currentPageNumber, totalPages);
+
+    //Then
     assertThat(actual).isEqualTo(expected);
   }
 
